@@ -29,6 +29,7 @@ Because of internet restrictions and regulations in mainland China, the remote-s
 
 - Ubuntu Server
 - Node JS
+- AWS translate secret key
 
 A linux server is required, UBUNTU-server is preferred. You need the SSH credentials in order to access this server. Once you have the credentials, you can login through a unix terminal using the following command (assuming your ip is 47.57.78.73):
 
@@ -70,6 +71,10 @@ When prompted please type your root password.
         forever start server.js
 
 **IMPORTANT NOTICE:** After running the remote-server using the "forever" command, there is no need to run it again.
+
+The remote-server APP uses Amazon translation API and therefore needs a secret key. Please ask the System's Administrator for this information. Once you obtain this key please update the file config.json located at:
+
+        remote-server/config.json
 
 ## Errors
 
