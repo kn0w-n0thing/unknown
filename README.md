@@ -264,6 +264,18 @@ When you run the local server and open Google Chrome Browser on the address [htt
 
 ![gui](screenshots/top-indicators.png)
 
+The **CONSOLE WINDOW** is a terminal style prompt which is constantly printing the status of the system and additional information (pink links) which might be useful to the user.
+
+![console](screenshots/console.png)
+
+The **AI IMAGE RENDERING WINDOW** shows the generated image as the machine learning model generates this in realtime.
+
+![image-console](screenshots/ai-image.gif)
+
+The **SYSTEM INDICATOR** constantly monitors the CPU and MEMORY usage and shows their value graphically and numerically.
+
+![cpu](screenshots/cpu.png)
+
 The **START BUTTON** only appears once the 3 indicators on the top are green. When pressed, this button disappears. You will see the data being requested and the status of the request and other details prompted on the console view. After the you press this button the system will do auto-requests every given amount of time which you can define on the **Auto-request time (hrs)** text box next to the **START** button.
 
 ![gui](screenshots/start.png)
