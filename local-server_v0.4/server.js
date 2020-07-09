@@ -5,7 +5,7 @@ const config = require(configPath);
 //file system
 const fs = require("fs");
 
-//cpu %
+//cpu % usage
 const os = require("os-utils");
 
 //EXPRESS Server

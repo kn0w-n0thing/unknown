@@ -24,7 +24,6 @@ let screenIdicatorColor = [];
 let screenBoxColor = [];
 let thumb = [];
 let oscText = [];
-let screenConnectCount = [];
 let screenBoxSize, screenBoxSpacer;
 let screenAddress = [];
 let screenPort = [];
@@ -52,7 +51,8 @@ let imageCount = 0;
 let cpu;
 let freeMem;
 let totalMem;
-let graphValues = [];
+let cpuGraphValues = [];
+let memoryGraphValues = [];
 
 function preload() {
   font = loadFont("assets/Roboto-Regular.ttf");
@@ -64,9 +64,9 @@ function setup() {
   strokeWeight(2);
 
   //Pop-up message before reload page
-  // window.onbeforeunload = function () {
-  //   return "";
-  // };
+  window.onbeforeunload = function () {
+    return "";
+  };
 
   guiBoxPosX = displayWidth / 100;
   guiBoxPosY = displayHeight / 50;
@@ -77,7 +77,8 @@ function setup() {
   screenBoxSpacer = screenBoxSize / (config.screens.length - 1.5);
 
   for (let i = 0; i < 20; i++) {
-    graphValues.push(0);
+    cpuGraphValues.push(0);
+    memoryGraphValues.push(0);
   }
 
   //SETUP FONT
@@ -112,7 +113,7 @@ function setup() {
     "\n.##..##..##..##..##.##...##..##..##..##..#######..##..##." +
     "\n..####...##..##..##..##..##..##...####....##.##...##..##.";
   receivedData +=
-    "<br/><br/>For detailed instrctions on how to setup and run: <a href='http://localhost:4000/README.md' target='_blank'><strong>README</strong></a><br/>";
+    "<br/><br/>For detailed instrctions on how to setup and run: <a href='https://github.com/fitosegrera/unknown' target='_blank'><strong>README</strong></a><br/>";
   receivedData +=
     "<br/>IMPORTANT: Please make sure all clients are up and running (remote-server, local-server, runwayml-(AI)). An indicator highlights the status of each client at any given time: green = connected, red = disconnected.<br/>";
   receivedData +=
@@ -302,11 +303,13 @@ function setup() {
   });
 
   localSocket.on("system-load", (sys) => {
-    cpu = round(sys.cpu, 2) * 100;
-    freeMem = round(sys.freeMemory) / 1000;
-    totalMem = round(sys.totalMemory) / 1000;
-    graphValues.push(cpu);
-    graphValues.shift();
+    cpu = (sys.cpu * 100).toFixed();
+    totalMem = (sys.totalMemory / 1000).toFixed(2);
+    freeMem = totalMem - (sys.freeMemory / 1000).toFixed(2);
+    cpuGraphValues.push(cpu);
+    cpuGraphValues.shift();
+    memoryGraphValues.push(freeMem);
+    memoryGraphValues.shift();
   });
 
   localSocket.on("remote-error", (error) => {
@@ -397,20 +400,8 @@ function setup() {
     localSocket.on("screen-status-" + (c + 1), (data) => {
       if (data) {
         screenIdicatorColor[c] = connectColor;
-        if (screenConnectCount[c] < 1) {
-          receivedData += "<br/>Screen-" + (c + 1) + " connected!<br/>";
-          screenConnectCount[c]++;
-          terminal.html(receivedData);
-          div.scrollTop(div[0].scrollHeight);
-        }
       } else {
         screenIdicatorColor[c] = disconnectColor;
-        screenConnectCount[c] = 0;
-        receivedData +=
-          "<br/>WARNING: Screen-" + (c + 1) + " disconnected!<br/>";
-        terminal.html(receivedData);
-        div.scrollTop(div[0].scrollHeight);
-
         thumb[c] = undefined;
         oscText[c] = "";
 
@@ -568,17 +559,23 @@ function draw() {
   let x1 = marginX * 2;
   let y1 = guiSizeY + butSizeY + marginY * 6;
   let maxVal = 30;
-  let graphSpacer = screenBoxSize / graphValues.length;
+  let graphSpacer = screenBoxSize / cpuGraphValues.length;
   fill(thirdColor);
-  rect(x1, y1 - maxVal, graphSpacer * graphValues.length, maxVal + 5);
+  rect(x1, y1 - maxVal, graphSpacer * cpuGraphValues.length, maxVal + 5);
   stroke(mainColor);
-  for (let i = 0; i < graphValues.length; i++) {
+  for (let i = 0; i < cpuGraphValues.length; i++) {
     if (i > 0) {
       line(
         x1 + i * graphSpacer,
-        y1 - map(graphValues[i], 0, 100, 0, maxVal),
+        y1 - map(cpuGraphValues[i], 0, 100, 0, maxVal),
         x1 + (i - 1) * graphSpacer,
-        y1 - map(graphValues[i - 1], 0, 100, 0, maxVal)
+        y1 - map(cpuGraphValues[i - 1], 0, 100, 0, maxVal)
+      );
+      line(
+        x1 + i * graphSpacer,
+        y1 - map(memoryGraphValues[i], 0, totalMem, 0, maxVal),
+        x1 + (i - 1) * graphSpacer,
+        y1 - map(memoryGraphValues[i - 1], 0, totalMem, 0, maxVal)
       );
     }
   }
@@ -588,12 +585,12 @@ function draw() {
   noStroke();
   text(
     "CPU: " + cpu + " %",
-    marginX * 3 + graphSpacer * graphValues.length,
+    marginX * 3 + graphSpacer * cpuGraphValues.length,
     guiSizeY + butSizeY * 2 + marginY * 1.5
   );
   text(
     "MEM: " + freeMem + " / " + totalMem + " GB",
-    marginX * 3 + graphSpacer * graphValues.length,
+    marginX * 3 + graphSpacer * cpuGraphValues.length,
     guiSizeY + butSizeY * 2 + marginY * 1.5 + fontSize
   );
 
@@ -803,7 +800,6 @@ function loadGuiData() {
     config.screens.forEach((element) => {
       screenIdicatorColor.push(disconnectColor);
       screenBoxColor.push(thirdColor);
-      screenConnectCount.push(1);
       oscText.push("");
     });
     thumb = new Array(config.screens.length);
