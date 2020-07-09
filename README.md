@@ -200,11 +200,11 @@ This instructions assume you are setting this app up on a device running ubuntu 
 
 This is a complex system with many parts. Please follow the next steps mindfully.
 
-### **remote-server**
+## **remote-server**
 
 The remote-server should be running permanently by now using the "forever" command. If you are not sure if you did this correctly please refer to the [remote-server](#remote-server) section of this manual.
 
-### **local-server**
+## **local-server**
 
 1. In the local machine (we use an INTEL NUC mini PC) run runwayml and our text to image machine learning model. Please search for runwayml on your local machine and run it.
 
@@ -234,7 +234,7 @@ If the remote server and runwayml are running correctly you should be able to se
 
 If the **START** button does not appear, this means that probably one of the servers or runwayml are not running. Please check.
 
-### **newsHeadlinesApp**
+## **newsHeadlinesApp**
 
 This Application runs on the lattepanda alpha mini PC. Before running this APP we need to make sure the emotions (face recognition) APP is running.
 
@@ -252,7 +252,7 @@ This Application runs on the lattepanda alpha mini PC. Before running this APP w
 
 After running our system we need to make sure that all APPs are running properly and that all IP addresses and PORTS are correct.
 
-### **local-server**
+## **local-server**
 
 When you run the local server and open Google Chrome Browser on the address [http://localhost:4000](http://localhost:4000) you will see the following **GUI**:
 
@@ -290,7 +290,7 @@ The **IP & PORTS** text boxes at the bottom allow you to change the addresses an
 
 ![gui](screenshots/addresses.png)
 
-### **newsHeadlinesApp**
+## **newsHeadlinesApp**
 
 A configuration GUI has been added to the APP. In order to bring up the configuration interface please press the letter 's' on the keyboard.
 
