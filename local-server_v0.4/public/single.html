@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title></title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <script type="text/javascript" src="/js/p5.min.js"></script>
+    <style>
+      body {
+        background: rgb(40, 40, 40);
+        color: #fff;
+      }
+
+      p {
+        padding-top: 10px;
+        padding-left: 20px;
+        font-size: 24px;
+      }
+      a {
+        color: #da70a1;
+        font-size: 24px;
+        padding-left: 20px;
+      }
+      img {
+        width: 400px;
+        height: 400px;
+        padding: 30px 20px 0px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="data"></div>
+  </body>
+  <script>
+    $(() => {
+      const urlParams = new URLSearchParams(window.location.search);
+      const headline = urlParams.get("headline");
+      const translation = urlParams.get("translation");
+      const imgUrl = urlParams.get("imgurl");
+      const author = urlParams.get("author");
+      const publishedAt = urlParams.get("published");
+      const url = urlParams.get("url");
+      console.log("url", "http://localhost:4000" + url);
+      $("#data").append("<p><strong>Headline: " + headline + "</strong></p>");
+      $("#data").append(
+        "<p><strong>Translation:</strong> " + translation + "</p>"
+      );
+      $("#data").append("<p><strong>Date:</strong> " + publishedAt + "</p>");
+      $("#data").append("<p><strong>Author:</strong> " + author + "</p>");
+      $("#data").append(
+        "<a href='" + url + "' target='_blank'>" + url + "</a></br>"
+      );
+      $("#data").append("<p>" + imgUrl + "</p>");
+      $("#data").append("<img src='http://localhost:4000" + imgUrl + "'>");
+    });
+  </script>
+</html>

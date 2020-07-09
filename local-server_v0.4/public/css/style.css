@@ -1,0 +1,46 @@
+html,
+body {
+  height: 100%;
+  font-family: "Lucida Console, Courier, monospace";
+}
+
+body {
+  background: rgb(40, 40, 40);
+  font-size: 48;
+  color: #fff;
+  overflow-x: hidden;
+  /* overflow: hidden; */
+}
+
+h1 {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+a:link {
+  color: #da70a1;
+  font-family: "Lucida Console, Courier, monospace";
+}
+
+a:visited {
+  color: #da70a1;
+  font-family: "Lucida Console, Courier, monospace";
+}
+
+::-webkit-scrollbar {
+  background-color: transparent;
+  width: 10px;
+}
+::-webkit-scrollbar-track {
+  background-color: transparent;
+}
+::-webkit-scrollbar-track-piece {
+  background-color: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background-color: #d4ffee;
+  border: 0px;
+}
+::-webkit-scrollbar-corner {
+  background-color: transparent;
+}
