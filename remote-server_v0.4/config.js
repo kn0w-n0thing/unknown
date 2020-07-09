@@ -4,8 +4,8 @@ const config = {
     port: 5000,
   },
   aws: {
-    accessKeyId: "AKIA4SYPD4BPW575HA6O",
-    secretAccessKey: "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",
+    accessKeyId: "XXXXXXXXXXXXXXXXXXXXXX",
+    secretAccessKey: "XXXXXXXXXXXXXXXXXXXXXXXX",
     region: "us-east-1",
   },
 };
