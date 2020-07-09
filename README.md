@@ -230,8 +230,6 @@ The remote-server should be running permanently by now using the "forever" comma
 
 A graphic user interface (GUI) should load on your browser.
 
-![gui](screenshots/local-gui.png)
-
 If the remote server and runwayml are running correctly you should be able to see a **START** button pop up on the lower right corner of the "console-style" window of the GUI. Press this button and the system will download and process the DATA.
 
 If the **START** button does not appear, this means that probably one of the servers or runwayml are not running. Please check.
