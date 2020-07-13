@@ -435,3 +435,5 @@ The known issues listed bellow are small problems found for different reasons. T
 ### **1. newsHeadlinesAPP Glitch**
 
 There is a glitch that happens when the newsHeadlinesApp is running, specifically during the headline render scene. If the connection with the local-server is severed or lost, the screen will glitch for a few seconds before presenting the message: "osc ERROR"...
+
+**IMPORTANT NOTE:** This error only happens on the lattepandas mini PCs. It hs been tested on a regular laptop and the glitch does not happen on it.
