@@ -6,6 +6,7 @@ This README file contains the instructions on how to setup and run the distribut
 
 ## Table of contents:
 
+- [Introduction](#Introduction)
 - [remote-server](#remote-server)
   - [Required](#Required)
   - [Installing](#Installing)
@@ -21,6 +22,10 @@ This README file contains the instructions on how to setup and run the distribut
 - [Configuration](#Configuration)
 - [Stop and Shutdown](#Stop-And-Shutdown)
 - [Known Issues](#Known-Issues)
+
+# Introduction
+
+The system has several layers, some working synchronously and others asynchronously. A local-server requests for top news data (in english and chinese) every few hours. A remote-server is used as a bridge between the local-server (in the gallery space) and the news API. All collected chinese news are translated on the remote-server using the AWS translation API. Once the data is ready, the local-server sends the headlines (texts) to runwayml which uses a machine learning AttnGAN model to generate unique images from these headlines. All data is saved locally (news data as .json) and images as jpeg. A series of lattepandas mini PCs with big screens are placed around the gallery running an APP developed using openFrameworks (C++). Every certain amount of time these request for new data from the local server. These screens will display a random headline and render the AI-generated image while capturing facial emotion data from the viewer (using a camera and tensorflow with python). Finally the emotion data is displayed on the screen for the viewer to see and sent to another PC running unity3D. This final APP is generating an immersive 3D galaxy from all the data mentioned previously and rendering it on a big format LED screen fixed on the celling of the gallery.
 
 # remote-server
 
