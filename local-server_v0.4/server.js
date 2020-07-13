@@ -269,7 +269,7 @@ remoteSocket.on("error", (error) => {
 //setup communication with Runway ML
 runwaySocket = io_client.connect(runwaySocketUrl);
 
-//on conncetion
+//on connection
 runwaySocket.on("connect", () => {
   if (debug) {
     console.log("runwayml connected!");
@@ -279,7 +279,7 @@ runwaySocket.on("connect", () => {
   runwaymlReady = true;
 });
 
-//on conncetion
+//on disconnection
 runwaySocket.on("disconnect", () => {
   if (debug) {
     console.log("runwayml disconnected!");

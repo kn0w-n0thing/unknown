@@ -1,57 +1,57 @@
 {
-  "server": {
-    "port": 4000
-  },
-  "remoteServer": {
-    "url": "http://47.57.78.73:5000"
-  },
-  "runwayml": {
-    "url": "http://localhost:3000"
-  },
-  "oscReceiver": {
-    "host": "localhost",
-    "port": 4003
-  },
-  "data": {
-    "zhFolder": "/public/data/zh/",
-    "enFolder": "/public/data/en/",
-    "headlinesJson": "/public/data/headlines.json"
-  },
-  "gui": {
-    "mainColor": "#D4FFEE",
-    "secondaryColor": "#282828",
-    "thirdColor": "#202020",
-    "connectColor": "#A6FF00",
-    "disconnectColor": "#FF0077",
-    "ping": 3000,
-    "requestTimer": "3",
-    "screens": [
-      {
-        "id": "1",
-        "ip": "10.0.0.37",
-        "port": "5001"
-      },
-      {
-        "id": "2",
-        "ip": "10.0.0.39",
-        "port": "5001"
-      },
-      {
-        "id": "3",
-        "ip": "127.0.0.1",
-        "port": "5001"
-      },
-      {
-        "id": "4",
-        "ip": "127.0.0.1",
-        "port": "5001"
-      },
-      {
-        "id": "5",
-        "ip": "127.0.0.1",
-        "port": "5001"
-      }
-    ]
-  },
-  "debug": true
+    "server": {
+        "port": 4000
+    },
+    "remoteServer": {
+        "url": "http://47.57.78.73:5000"
+    },
+    "runwayml": {
+        "url": "http://localhost:3000"
+    },
+    "oscReceiver": {
+        "host": "localhost",
+        "port": 4003
+    },
+    "data": {
+        "zhFolder": "/public/data/zh/",
+        "enFolder": "/public/data/en/",
+        "headlinesJson": "/public/data/headlines.json"
+    },
+    "gui": {
+        "mainColor": "#D4FFEE",
+        "secondaryColor": "#282828",
+        "thirdColor": "#202020",
+        "connectColor": "#A6FF00",
+        "disconnectColor": "#FF0077",
+        "ping": 3000,
+        "requestTimer": "3",
+        "screens": [
+            {
+                "id": "1",
+                "ip": "10.0.0.37",
+                "port": "5001"
+            },
+            {
+                "id": "2",
+                "ip": "10.0.0.39",
+                "port": "5001"
+            },
+            {
+                "id": "3",
+                "ip": "127.0.0.1",
+                "port": "5001"
+            },
+            {
+                "id": "4",
+                "ip": "127.0.0.1",
+                "port": "5001"
+            },
+            {
+                "id": "5",
+                "ip": "127.0.0.1",
+                "port": "5001"
+            }
+        ]
+    },
+    "debug": true
 }

@@ -20,6 +20,7 @@ This README file contains the instructions on how to setup and run the distribut
 - [Running The System](#Run-The-System)
 - [Configuration](#Configuration)
 - [Stop and Shutdown](#Stop-And-Shutdown)
+- [Known Issues](#Known-Issues)
 
 # remote-server
 
@@ -243,7 +244,9 @@ If the **START** button does not appear, this means that probably one of the ser
 
 This Application runs on the lattepanda alpha mini PC. Before running this APP we need to make sure the emotions (face recognition) APP is running.
 
-**IMPORTANT NOTICE:** This emotion recognition APP is not included in this repository. Please contact the System's Administrator for further details or visit the repository of the emotion recognition APP [HERE]().
+**IMPORTANT NOTICE:** This emotion recognition APP is not included in this repository. Please contact the System's Administrator for further details or visit the repository of the emotion recognition APP [HERE](). The emotion recognition APP should be placed within the newsHeadlinesAPP at:
+
+        newsHeadlinesApp_vX_X/bin/data/
 
 1.  Once the emotion recognition APP is running go to your newsHeadlinesApp /bin folder using a terminal:
 
@@ -424,3 +427,11 @@ In order to set up these APPs to run at BOOT you might want to see the following
 3. Now manually stop runwayml's model by clicking on the RED BUTTON called "Stop Model" located on the bottom right corner of the UNKNOWN Workspace. If you can't remember where to find this button, please refer to the [Run](#Run-The-System) section of this manual.
 
 4. Shut down the local-server PC normally.
+
+# Known-Issues
+
+The known issues listed bellow are small problems found for different reasons. These don't compromise the functionality of the system at all.
+
+### **1. newsHeadlinesAPP Glitch**
+
+There is a glitch that happens when the newsHeadlinesApp is running, specifically during the headline render scene. If the connection with the local-server is severed or lost, the screen will glitch for a few seconds before presenting the message: "osc ERROR"...
