@@ -250,9 +250,9 @@ string astralObjectGenerator::generateChineseText(ofJson emoObj) {
     spin = spinOpts[1][(int)ofRandom(secondEmo2D)];
   }
 
-  paragraph = "您生成了一" + units + speed + ", " + size + objects +
-              ", 它散发出" + brightness + ", " + flickerRate + radiance + "。" +
-              orbitingPlanets + "。它的旋转速度如同" + spin + "。";
+  paragraph = "您生成了一" + units + speed + "、 " + size + objects +
+              " ，它散发出" + brightness + "、" + flickerRate + radiance +
+              "。 " + orbitingPlanets + "。它的旋转速度如同" + spin + "。";
 
   return paragraph;
 }
