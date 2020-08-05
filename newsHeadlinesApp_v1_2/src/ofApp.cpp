@@ -299,6 +299,7 @@ void ofApp::renderEmotionsScene(ofJson jsonData) {
     if (chineseLangSelected) {
       emoObj = emo.processEmotions("zh");
       astralTextZhi = astralObject.generateChineseText(emoObj);
+      cout << astralTextZhi << endl;
     } else {
       emoObj = emo.processEmotions("en");
       astralTextEn = astralObject.generateEnglishText(emoObj);
@@ -321,7 +322,7 @@ void ofApp::renderEmotionsScene(ofJson jsonData) {
                   " |\nsad: " + ofToString(avgSad) +
                   " | surprised: " + ofToString(avgSurprised) +
                   " | neutral: " + ofToString(avgNeutral);
-    allAvgEmoTitlesZh = "愤怒:\n恶心的:\n害怕:\n快乐:\n伤心:\n惊讶的:\n中性:";
+    allAvgEmoTitlesZh = "愤怒:\n恶心:\n害怕:\n快乐:\n伤心:\n惊讶:\n中性:";
     allAvgEmoTitlesEn =
         "angry:\ndisgusted:\nafraid:\nhappy:\nsad:\nsurprised:\nneutral:";
     allAvgEmoZh = ofToString(avgAngry) + "\n" + ofToString(avgDisgusted) +
@@ -456,7 +457,7 @@ void ofApp::setup() {
   // GUI HEADLINES SCENE PARAMETERS
   headlinesParam.setName("HEADLINE");
   headlinesParam.add(fontSize.set("Font Size", 72, 0, 300));
-  headlinesParam.add(rightMarginError.set("Margin Fix", 1.5, 0, 3));
+  headlinesParam.add(rightMarginError.set("Margin Fix", 1.5, 0, 6));
   headlinesParam.add(headStrCorrect.set("Auto Correct -", true));
   headlinesParam.add(textColor.set("Headline Color", ofColor(255, 255, 255),
                                    ofColor(0, 0, 0), ofColor(255, 255, 255)));

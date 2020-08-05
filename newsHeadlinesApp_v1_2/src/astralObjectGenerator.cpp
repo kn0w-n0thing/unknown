@@ -125,7 +125,7 @@ string astralObjectGenerator::generateChineseText(ofJson emoObj) {
       "紧簇成群的星体", "聚集的星体", "星体",      "星体",
       "星体",           "星域",       "孤立的星体"};
   string radianceOpts[primaryEmotionMax] = {
-      "红光", "霓虹橙光", "白光", "金光", "蓝光", "五彩光", "不存在的光"};
+      "红光", "霓虹橙光", "白光", "金光", "蓝光", "五彩光芒", "朦胧暗昧的光"};
   string unitsOpts[primaryEmotionMax] = {"丛", "簇", "颗", "个",
                                          "个", "片", "颗"};
 
@@ -147,7 +147,7 @@ string astralObjectGenerator::generateChineseText(ofJson emoObj) {
        "它的大气层外点缀着许多体积更小的卫星", "有许多较小的星体围绕着它运行",
        "有许多较小的星体围绕着它运行"}};
   string flickerRateOpts[secondEmotionMax][secondEmo2D] = {
-      {"稳定的", "灿烂的", "闪亮的", "稳定的", "灿烂的"},
+      {"稳定的", "均匀的", "稳定的", "稳定的", "稳定的"},
       {"忽明忽灭的", "闪烁的", "明暗不定的", "忽明忽灭的", "闪烁的"},
       {"忽隐忽现的", "闪烁的", "颤动的", "忽隐忽现的", "脉冲般的"}};
   string brightnessOpts[secondEmotionMax][secondEmo2D] = {
@@ -160,37 +160,37 @@ string astralObjectGenerator::generateChineseText(ofJson emoObj) {
       {"巨大的", "巨型的", "极大的", "庞大的", "巨大的"}};
   string spinOpts[secondEmotionMax][secondEmo2D] = {
       {"一座废弃的旋转木马", "旧的吱吱作响的马车车轮", "一座废弃的旋转木马",
-       "一台无风时的风车", "旧的吱吱作响的马车车轮"},
+       "一台无风时的风车", "旧得吱吱作响的马车车轮"},
       {"一台风力发电机", "一个悠悠球", "一只小狗试图用嘴巴抓住自己的尾巴",
        "一片正在飘落的树叶", "一只被风吹着跑的塑料袋"},
       {"一阵五级飓风", "你在日常生活中为了形成习惯而进行动作的频繁重复",
        "一台台式风扇", "一阵旋风", "喷气式飞机的引擎"}};
 
-  if (emoObj["dominant-emotion"] == "Anger") {
+  if (emoObj["original-dominant-emotion"] == "Anger") {
     objects = objectOpts[0];
     radiance = radianceOpts[0];
     units = unitsOpts[0];
-  } else if (emoObj["dominant-emotion"] == "Disgust") {
+  } else if (emoObj["original-dominant-emotion"] == "Disgust") {
     objects = objectOpts[1];
     radiance = radianceOpts[1];
     units = unitsOpts[1];
-  } else if (emoObj["dominant-emotion"] == "Fear") {
+  } else if (emoObj["original-dominant-emotion"] == "Fear") {
     objects = objectOpts[2];
     radiance = radianceOpts[2];
     units = unitsOpts[2];
-  } else if (emoObj["dominant-emotion"] == "Happiness") {
+  } else if (emoObj["original-dominant-emotion"] == "Happiness") {
     objects = objectOpts[3];
     radiance = radianceOpts[3];
     units = unitsOpts[3];
-  } else if (emoObj["dominant-emotion"] == "Sadness") {
+  } else if (emoObj["original-dominant-emotion"] == "Sadness") {
     objects = objectOpts[4];
     radiance = radianceOpts[4];
     units = unitsOpts[4];
-  } else if (emoObj["dominant-emotion"] == "Surprise") {
+  } else if (emoObj["original-dominant-emotion"] == "Surprise") {
     objects = objectOpts[5];
     radiance = radianceOpts[5];
     units = unitsOpts[5];
-  } else if (emoObj["dominant-emotion"] == "Neutral") {
+  } else if (emoObj["original-dominant-emotion"] == "Neutral") {
     objects = objectOpts[6];
     radiance = radianceOpts[6];
     units = unitsOpts[6];
@@ -314,7 +314,7 @@ string astralObjectGenerator::generateEnglishText(ofJson emoObj) {
        "Many other smaller objects orbit around it",
        "Many other smaller objects orbit around it"}};
   string flickerRateOpts[secondEmotionMax][secondEmo2D] = {
-      {"steady", "beaming", "shining", "steady", "beaming"},
+      {"steady", "uniform", "stable", "steady", "steady"},
       {"wavering", "twinkling", "oscillating", "wavering", "twinkling"},
       {"flickering", "flashing", "quivering", "flickering", "pulsating"}};
   string brightnessOpts[secondEmotionMax][secondEmo2D] = {
@@ -327,13 +327,13 @@ string astralObjectGenerator::generateEnglishText(ofJson emoObj) {
       {"massive", "colossal", "enormous", "unwieldy", "massive"}};
   string spinOpts[secondEmotionMax][secondEmo2D] = {
       {"an abandoned carousel", "an old creaky wagon wheel",
-       "an abandoned carousel", "A windmill on a calm day",
+       "an abandoned carousel", "a windmill on a calm day",
        "an old creaky wagon wheel"},
-      {"a wind turbine", " a yo - yo",
-       "a dog trying to catch its tail in its mouth", "A falling leaf",
-       "A plastic bag caught in the wind"},
+      {"a wind turbine", " a yo-yo",
+       "a dog trying to catch its tail in its mouth", "a falling leaf",
+       "a plastic bag caught in the wind"},
       {"a category five hurricane", "the habitualization of your daily life",
-       "A desktop fan", "A whilrwind", "A jet engine"}};
+       "a desktop fan", "a whilrwind", "a jet engine"}};
 
   if (emoObj["dominant-emotion"] == "Anger") {
     objects = objectOpts[0];
