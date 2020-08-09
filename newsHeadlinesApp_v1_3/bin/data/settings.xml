@@ -1,0 +1,56 @@
+<?xml version="1.0"?>
+<SETTINGS>
+	<GENERAL>
+		<PC_ID>1</PC_ID>
+		<Init_Language_Chinese>1</Init_Language_Chinese>
+		<Background_Color>0, 0, 0, 255</Background_Color>
+		<Margin_X>50</Margin_X>
+		<Margin_Y>100</Margin_Y>
+	</GENERAL>
+	<HEADLINE>
+		<Font_Size>144</Font_Size>
+		<Margin_Fix>2.67347</Margin_Fix>
+		<Auto_Correct_->1</Auto_Correct_->
+		<Headline_Color>255, 255, 255, 255</Headline_Color>
+		<Time_Limit>15</Time_Limit>
+	</HEADLINE>
+	<IMAGE_RENDERING>
+		<Max_Passes>493</Max_Passes>
+		<Max_Range>1000</Max_Range>
+		<Pixel_Size_Min>1</Pixel_Size_Min>
+		<Pixel_Size_Max>20</Pixel_Size_Max>
+		<Range_Increment>3.19048</Range_Increment>
+	</IMAGE_RENDERING>
+	<EMOTIONS>
+		<Font_Size>72</Font_Size>
+		<Text_Color>255, 255, 255, 255</Text_Color>
+		<Paragraph_Space>82</Paragraph_Space>
+		<Object_Size>1.7</Object_Size>
+		<Camera_Distance>1500</Camera_Distance>
+		<Time_Limit>25</Time_Limit>
+		<Data_Path>emotions/Python/emotions.json</Data_Path>
+	</EMOTIONS>
+	<OSC>
+		<OSC_RECEIVER>
+			<PORT>5001</PORT>
+		</OSC_RECEIVER>
+		<OSC_HEADLINE_SENDER>
+			<IP>127.0.0.1</IP>
+			<PORT>4003</PORT>
+			<Timeout>3</Timeout>
+		</OSC_HEADLINE_SENDER>
+		<OSC_EMOTIONS_SENDER>
+			<IP>127.0.0.1</IP>
+			<PORT>4002</PORT>
+			<Timeout>3</Timeout>
+		</OSC_EMOTIONS_SENDER>
+		<OSC_GALAXY_SENDER>
+			<IP>127.0.0.1</IP>
+			<PORT>4001</PORT>
+		</OSC_GALAXY_SENDER>
+	</OSC>
+	<DEBUG>
+		<_Debug_Mode>0</_Debug_Mode>
+		<OSC_Debug_Console>1</OSC_Debug_Console>
+	</DEBUG>
+</SETTINGS>
