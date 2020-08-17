@@ -269,7 +269,7 @@ After running our system we need to make sure that all APPs are running properly
 
 When you run the local server and open Google Chrome Browser on the address [http://localhost:4000](http://localhost:4000) you will see the following **GUI**:
 
-![gui](screenshots/local-gui.png)
+![gui](screenshots/local-server-gui.png)
 
 **The 3 indicators on the top**, namely local-server, remote-server and runwayml-(AI) have a green/red circle next to them to indicate their status. Green means connected, red means disconnected.If any of these shows red, please refer to the [Run](#Run) section of this manual.
 
@@ -297,11 +297,15 @@ The **Auto-request time (hrs)** text box takes in the number of hours between ea
 
 The **SCREENS THUMBNAILS** with the labels: Screen 1, Screen 2, etc. indicate the status of the newsHeadlinesApps running on the lattePandas mini PCs. When connected, a thumbnail of the AI image that will be rendered on each screen will be displayed and the indicator will be green. Please notice that, due to a slow ping mechanism, there might be a delay between the moment when the newsHeadlinesApp runs and the thumbnail appears on the GUI.
 
-![gui](screenshots/squares.png)
+![gui](screenshots/screens.png)
 
 The **IP & PORTS** text boxes at the bottom allow you to change the addresses and ports of the different newsHeadlinesApp machines. Please make sure that you press the save button after changing the IPs or PORTs values for any of the screens. As a user-friendly measure, if the IP address you input is wrong, you will see a message suggesting you the correct IP address on top of the address box and bellow the SCREEN THUMBNAIL box.
 
-![gui](screenshots/addresses.png)
+![gui](screenshots/address-port.png)
+
+The **SHUTDOWN button** allows you to remotely and safely shutdown the lattepandas running the newsHeadlineApp. Please refer to the [Stop and Shutdown](#Stop-And-Shutdown) section on this manual for more information.
+
+![shutdown](screenshots/shutdown.png)
 
 ## **newsHeadlinesApp**
 

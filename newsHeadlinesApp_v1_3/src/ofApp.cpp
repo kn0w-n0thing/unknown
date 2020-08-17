@@ -321,7 +321,7 @@ void ofApp::renderEmotionsScene(ofJson jsonData) {
                   " |\nsad: " + ofToString(avgSad) +
                   " | surprised: " + ofToString(avgSurprised) +
                   " | neutral: " + ofToString(avgNeutral);
-    allAvgEmoTitlesZh = "愤怒:\n恶心:\n害怕:\n快乐:\n伤心:\n惊讶:\n中性:";
+    allAvgEmoTitlesZh = "愤怒:\n厌恶:\n害怕:\n快乐:\n忧伤:\n惊讶:\n中性:";
     allAvgEmoTitlesEn =
         "angry:\ndisgusted:\nafraid:\nhappy:\nsad:\nsurprised:\nneutral:";
     allAvgEmoZh = ofToString(avgAngry) + "\n" + ofToString(avgDisgusted) +
