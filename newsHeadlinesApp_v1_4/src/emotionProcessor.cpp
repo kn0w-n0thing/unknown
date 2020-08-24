@@ -80,7 +80,7 @@ ofJson emotionProcessor::processEmotions(string language) {
         originalDomEmotion = "Surprise";
       }
       if (highestVal == neutral / frames) {
-        domEmotion = "无明显倾向";
+        domEmotion = "中性";
         originalDomEmotion = "Neutral";
       }
     } else {
