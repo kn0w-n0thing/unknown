@@ -69,7 +69,10 @@ async function main(res) {
   });
 
   //English News Fetch
-  country = "us";
+  let enCountries = ["us", "uk"];
+  country = enCountries[Math.floor(Math.random() * enCountries.length)];
+  console.log("selected english country:", country);
+
   newsResponse = await fetch(
     "https://newsapi.org/v2/top-headlines?country=" +
       country +
