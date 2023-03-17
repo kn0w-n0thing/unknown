@@ -27,8 +27,9 @@ const oscPort = config.oscReceiver.port;
 
 //NewsAPI
 let headlines = {};
-let remoteServer = config.remoteServer.url;
-let remoteServerStatus = "disconnected";
+const {getHeadlines} = require("./public/js/news-serivce");
+// let remoteServer = config.remoteServer.url;
+let remoteServerStatus = "connected";
 
 //Headlines Json file
 let headlinesJsonPath = __dirname + config.data.headlinesJson;
@@ -207,7 +208,41 @@ io_server.on("connection", (socket) => {
   //When local server requests data
   socket.on("get-remote-data", () => {
     runwaymlReady = true;
-    getRemoteData();
+    getHeadlines().then(res => {
+      io_server.emit("headlines", res);
+      headlines = res;
+      if (debug) {
+        console.log("=====================");
+        console.log(headlines);
+      }
+
+      txtToImg = headlines.zh.articles[imageCount].translation;
+
+      if (debug) {
+        console.log("zh RENDERING IMAGE", imageCount);
+      }
+
+      let rawJson = fs.readFileSync(headlinesJsonPath);
+      let parsedJson = JSON.parse(rawJson);
+
+      let zhCueCount = 0;
+      headlines.zh.articles.forEach((h) => {
+        parsedJson.zh.articles[cue + zhCueCount] = h; //cue + zhCueCount;
+        zhCueCount++;
+      });
+
+      console.log(parsedJson);
+
+      saveJsonData(parsedJson, headlinesJsonPath, (res) => {
+        if (debug) {
+          console.log(res);
+        }
+        io_server.emit("data-saved", headlinesJsonPath);
+        getAi(txtToImg);
+        runwayConnectionTimeout();
+      });
+    });
+
     if (debug) {
       console.log("requesting remote data...");
     }
@@ -252,71 +287,6 @@ io_server.on("connection", (socket) => {
       oscClients[c].send("/shutdown" + (c + 1));
     }
   });
-});
-
-/////////////////////////
-//Handle Remote sockets//
-/////////////////////////
-//Data transmission back and forth with server in Hong Kong
-let remoteSocket = io_client.connect(remoteServer);
-
-remoteSocket.on("connect", () => {
-  if (debug) {
-    console.log("connected to remote server:", remoteServer);
-  }
-  remoteServerStatus = "connected";
-  io_server.emit("remote-status", remoteServerStatus);
-});
-
-remoteSocket.on("result", (res) => {
-  io_server.emit("headlines", res);
-  headlines = res;
-  if (debug) {
-    console.log("=====================");
-    console.log(headlines);
-  }
-
-  txtToImg = headlines.zh.articles[imageCount].translation;
-
-  if (debug) {
-    console.log("zh RENDERING IMAGE", imageCount);
-  }
-
-  let rawJson = fs.readFileSync(headlinesJsonPath);
-  let parsedJson = JSON.parse(rawJson);
-
-  let zhCueCount = 0;
-  headlines.zh.articles.forEach((h) => {
-    parsedJson.zh.articles[cue + zhCueCount] = h; //cue + zhCueCount;
-    zhCueCount++;
-  });
-
-  let enCueCount = 0;
-  headlines.en.articles.forEach((h) => {
-    parsedJson.en.articles[cue + enCueCount] = h; //cue + enCueCount;
-    enCueCount++;
-  });
-
-  console.log(parsedJson);
-
-  saveJsonData(parsedJson, headlinesJsonPath, (res) => {
-    if (debug) {
-      console.log(res);
-    }
-    io_server.emit("data-saved", headlinesJsonPath);
-    getAi(txtToImg);
-    runwayConnectionTimeout();
-  });
-});
-
-remoteSocket.on("error", (error) => {
-  if (debug) {
-    console.log("=====================");
-    console.error("ERROR with service", error.type);
-    console.error("ERROR ", error.err);
-    console.error("Please try again.");
-    io_server.emit("remote-error", error);
-  }
 });
 
 ////////////////////////////
@@ -410,14 +380,6 @@ if (debug) {
       console.log(info);
     }
   });
-}
-
-///////////////////////////////////
-//Get News Data fromRemote Server//
-///////////////////////////////////
-function getRemoteData() {
-  headlines = {};
-  remoteSocket.emit("getData");
 }
 
 /////////////////////////////////////////
